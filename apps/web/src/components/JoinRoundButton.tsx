@@ -24,11 +24,8 @@ const ERC20_ABI = [
 ] as const
 
 // Treasury address - where entry fees go
-// Can be either:
-// 1. Your EOA (wallet address) - simple, but requires manual prize distribution
-// 2. A deployed contract address - enables automatic prize distribution
-// Set this in .env.local
-const TREASURY_ADDRESS = (process.env.NEXT_PUBLIC_TREASURY_ADDRESS || "0x0000000000000000000000000000000000000000") as `0x${string}`
+// Default to your wallet address, can be overridden via NEXT_PUBLIC_TREASURY_ADDRESS env var
+const TREASURY_ADDRESS = (process.env.NEXT_PUBLIC_TREASURY_ADDRESS || "0xf39ce20c6a905157cf532890ed87b86f422774b7") as `0x${string}`
 
 interface JoinRoundButtonProps {
   roundId: string
@@ -108,17 +105,19 @@ export default function JoinRoundButton({ roundId, entryFee, pool, hasJoined }: 
       return
     }
 
-    // Use treasury address or fallback to a burn address for testing
+    // Use treasury address - your wallet address where entry fees will be collected
     // IMPORTANT: Treasury address should be a WALLET address, not the cUSD contract address
     let recipient: `0x${string}`
     
-    if (TREASURY_ADDRESS !== "0x0000000000000000000000000000000000000000" && TREASURY_ADDRESS.toLowerCase() !== CUSD_ADDRESS.toLowerCase()) {
-      recipient = TREASURY_ADDRESS
-    } else {
-      // Use burn address for testing if treasury not set or incorrectly set to cUSD address
-      recipient = "0x000000000000000000000000000000000000dead" as `0x${string}`
-      console.warn("Using burn address for testing. Set NEXT_PUBLIC_TREASURY_ADDRESS to your wallet address in .env.local")
+    if (TREASURY_ADDRESS.toLowerCase() === CUSD_ADDRESS.toLowerCase()) {
+      // Safety check: prevent sending to cUSD contract address
+      alert("⚠️ Error: Treasury address cannot be the cUSD contract address!\n\nPlease set NEXT_PUBLIC_TREASURY_ADDRESS to your wallet address.")
+      console.error("Treasury address is set to cUSD contract address. Cannot proceed.")
+      return
     }
+    
+    // Use the configured treasury address (your wallet)
+    recipient = TREASURY_ADDRESS
 
     try {
       // Convert entry fee to wei (cUSD has 18 decimals)
