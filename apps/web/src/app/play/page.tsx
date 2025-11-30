@@ -57,7 +57,7 @@ function PlayPageContent() {
 
   if (!isConnected) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
         <WalletButton />
         <div className="flex-1 flex flex-col items-center justify-center px-6">
           <motion.div
@@ -66,13 +66,13 @@ function PlayPageContent() {
             className="text-center"
           >
             <div className="text-6xl mb-6">🔒</div>
-            <h2 className="text-3xl font-black text-[#1a1a1a] mb-4">
+            <h2 className="text-3xl font-black text-white mb-4">
               Connect Your Wallet
             </h2>
-            <p className="text-lg text-[#1a1a1a] mb-8">
+            <p className="text-lg text-gray-200 mb-8">
               Please connect your wallet to start playing!
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Click the wallet button in the top right corner.
             </p>
           </motion.div>
@@ -85,7 +85,7 @@ function PlayPageContent() {
   // Check if user has joined the round
   if (!hasJoined && roundData) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
         <WalletButton />
         <div className="flex-1 flex flex-col items-center justify-center px-6">
           <motion.div
@@ -94,14 +94,14 @@ function PlayPageContent() {
             className="w-full max-w-md text-center"
           >
             <div className="text-6xl mb-6">💰</div>
-            <h2 className="text-3xl font-black text-[#1a1a1a] mb-4">
+            <h2 className="text-3xl font-black text-white mb-4">
               Join Round to Play
             </h2>
-            <p className="text-lg text-[#1a1a1a] mb-8">
+            <p className="text-lg text-gray-200 mb-8">
               Pay ${roundData.entryFee.toFixed(2)} to join this round and compete for the prize pool!
             </p>
             {loading ? (
-              <div className="w-full py-5 bg-[#f2f2f2] rounded-2xl animate-pulse"></div>
+              <div className="w-full py-5 bg-[#1e293b] rounded-2xl animate-pulse border border-[#334155]"></div>
             ) : (
               <JoinRoundButton
                 roundId={roundData.roundId}
@@ -121,7 +121,7 @@ function PlayPageContent() {
   if (hasPlayed || alreadyPlayed) {
     const score = userScore || existingScore
     return (
-      <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
         <WalletButton />
         <div className="flex-1 flex flex-col items-center justify-center px-6">
           <motion.div
@@ -130,15 +130,15 @@ function PlayPageContent() {
             className="w-full max-w-md text-center"
           >
             <div className="text-6xl mb-6">✅</div>
-            <h2 className="text-3xl font-black text-[#1a1a1a] mb-4">
+            <h2 className="text-3xl font-black text-white mb-4">
               Already Played This Round
             </h2>
-            <p className="text-lg text-[#1a1a1a] mb-4">
+            <p className="text-lg text-gray-200 mb-4">
               You can only play once per round!
             </p>
-            <div className="bg-[#f2f2f2] rounded-2xl p-4 mb-6">
+            <div className="bg-[#1e293b] rounded-2xl p-4 mb-6 border border-[#334155]">
               <p className="text-2xl font-black text-[#35d07f] mb-2">{score}</p>
-              <p className="text-sm text-gray-500">Your Score</p>
+              <p className="text-sm text-gray-400">Your Score</p>
             </div>
             <p className="text-sm text-gray-500 mb-8">
               Wait for the round to end and join the next round to play again!
@@ -153,7 +153,7 @@ function PlayPageContent() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => router.push("/")}
-              className="w-full py-4 px-6 border-2 border-[#1a1a1a] text-[#1a1a1a] font-bold rounded-2xl transition-all hover:bg-[#f2f2f2]"
+              className="w-full py-4 px-6 border-2 border-gray-400 text-white font-bold rounded-2xl transition-all hover:bg-[#1e293b]"
             >
               Home
             </motion.button>
@@ -182,10 +182,10 @@ function PlayPageContent() {
             <h1 className="text-4xl font-black text-[#1a1a1a] mb-4">
               Ready to Play?
             </h1>
-            <p className="text-lg text-[#1a1a1a] mb-4">
+            <p className="text-lg text-gray-200 mb-4">
               You'll have 30 seconds to match as many colors as possible!
             </p>
-            <div className="bg-[#f2f2f2] rounded-2xl p-3 mb-4">
+            <div className="bg-[#1e293b] rounded-2xl p-3 mb-4 border border-[#334155]">
               <p className="text-sm text-gray-600">
                 One play per round • Your score will be saved automatically
               </p>
@@ -193,32 +193,32 @@ function PlayPageContent() {
           </div>
 
           <div className="space-y-4 mb-8">
-            <div className="bg-[#f2f2f2] rounded-2xl p-4">
+            <div className="bg-[#1e293b] rounded-2xl p-4 border border-[#334155]">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">⏱️</span>
                 <div>
                   <p className="font-bold text-[#1a1a1a]">30 Seconds</p>
-                  <p className="text-sm text-gray-500">Time limit per game</p>
+                  <p className="text-sm text-gray-400">Time limit per game</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#f2f2f2] rounded-2xl p-4">
+            <div className="bg-[#1e293b] rounded-2xl p-4 border border-[#334155]">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">✅</span>
                 <div>
                   <p className="font-bold text-[#1a1a1a]">+1 Point</p>
-                  <p className="text-sm text-gray-500">For each correct answer</p>
+                  <p className="text-sm text-gray-400">For each correct answer</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#f2f2f2] rounded-2xl p-4">
+            <div className="bg-[#1e293b] rounded-2xl p-4 border border-[#334155]">
               <div className="flex items-center gap-3">
                 <span className="text-2xl">❌</span>
                 <div>
                   <p className="font-bold text-[#1a1a1a]">-1 Point</p>
-                  <p className="text-sm text-gray-500">For each wrong answer</p>
+                  <p className="text-sm text-gray-400">For each wrong answer</p>
                 </div>
               </div>
             </div>

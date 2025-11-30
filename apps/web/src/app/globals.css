@@ -9,8 +9,8 @@
     --primary-foreground: #1a1a1a;
     --secondary: #fbcc5c;
     --secondary-foreground: #1a1a1a;
-    --background: #ffffff;
-    --foreground: #1a1a1a;
+    --background: #0f172a; /* Cool dark slate blue - game background */
+    --foreground: #f8fafc; /* Light text for dark background */
     --card: #f2f2f2;
     --card-foreground: #1a1a1a;
     --muted: #f2f2f2;

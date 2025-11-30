@@ -179,7 +179,7 @@ function GamePageContent() {
   // Show loading while checking play status
   if (checking) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] items-center justify-center">
         <div className="text-4xl mb-4">🎮</div>
         <p className="text-lg text-[#1a1a1a]">Loading game...</p>
       </div>
@@ -243,7 +243,7 @@ export default function GamePage() {
 
   if (!isMounted) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] items-center justify-center">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
           <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
         </div>

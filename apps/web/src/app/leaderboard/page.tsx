@@ -47,11 +47,11 @@ function LeaderboardPageContent() {
   return (
     <div className="flex flex-col h-screen w-full pb-20 relative">
       <WalletButton />
-      <div className="sticky top-0 bg-white z-10 px-6 pt-20 pb-4">
+      <div className="sticky top-0 bg-[#0f172a] z-10 px-6 pt-20 pb-4">
         <motion.h1
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-4xl font-black text-[#1a1a1a]"
+          className="text-4xl font-black text-white"
         >
           Leaderboard
         </motion.h1>
@@ -60,11 +60,11 @@ function LeaderboardPageContent() {
       <div className="flex-1 overflow-y-auto px-4">
         {loading ? (
           <div className="flex items-center justify-center h-32">
-            <p className="text-[#1a1a1a]">Loading...</p>
+            <p className="text-white">Loading...</p>
           </div>
         ) : !Array.isArray(leaderboard) || leaderboard.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-32">
-            <p className="text-lg text-[#1a1a1a]">No scores yet</p>
+            <p className="text-lg text-white">No scores yet</p>
             <p className="text-sm text-gray-500">Be the first to submit!</p>
           </div>
         ) : (
@@ -80,14 +80,14 @@ function LeaderboardPageContent() {
                   stiffness: 200,
                 }}
                 className={`flex items-center gap-4 p-4 rounded-2xl ${
-                  entry.rank <= 3 ? "bg-gradient-to-r from-[#35d07f] to-[#fbcc5c]" : "bg-[#f2f2f2]"
+                  entry.rank <= 3 ? "bg-gradient-to-r from-[#35d07f] to-[#fbcc5c]" : "bg-[#1e293b] border border-[#334155]"
                 }`}
               >
                 <div className="text-2xl font-black w-12 text-center">
                   {entry.rank <= 3 ? ["🥇", "🥈", "🥉"][entry.rank - 1] : entry.rank}
                 </div>
                 <div className="flex-1">
-                  <p className="font-bold text-[#1a1a1a] text-lg font-mono text-sm">
+                  <p className="font-bold text-white text-lg font-mono text-sm">
                     {entry.address.slice(0, 6)}...{entry.address.slice(-4)}
                   </p>
                 </div>
@@ -112,11 +112,11 @@ export default function LeaderboardPage() {
 
   if (!isMounted) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] items-center justify-center">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
-          <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
+          <span className="text-5xl font-bold text-white">🎨</span>
         </div>
-        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+        <p className="mt-4 text-lg text-white">Loading...</p>
       </div>
     )
   }

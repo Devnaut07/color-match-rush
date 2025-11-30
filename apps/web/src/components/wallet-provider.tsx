@@ -1,6 +1,7 @@
 "use client";
 
 import { RainbowKitProvider, connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { lightTheme } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   injectedWallet,
@@ -131,10 +132,19 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
+  // Custom theme matching MiniPay colors
+  const customTheme = lightTheme({
+    accentColor: '#35d07f', // MiniPay green
+    accentColorForeground: '#1a1a1a', // Dark text
+    borderRadius: 'large',
+    fontStack: 'system',
+    overlayBlur: 'small',
+  });
+
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider theme={customTheme}>
           <MiniPayAutoConnect>{children}</MiniPayAutoConnect>
         </RainbowKitProvider>
       </QueryClientProvider>

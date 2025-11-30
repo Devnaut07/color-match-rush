@@ -67,7 +67,7 @@ function ResultContent() {
   }
 
   return (
-    <div className="flex flex-col h-screen w-full pb-20 relative">
+    <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
       <WalletButton />
       <div className="flex-1 flex flex-col items-center justify-center px-6">
         <motion.div
@@ -85,7 +85,7 @@ function ResultContent() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-5xl font-black text-[#1a1a1a] mb-2"
+          className="text-5xl font-black text-white mb-2"
         >
           {score} Points
         </motion.h1>
@@ -94,7 +94,7 @@ function ResultContent() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="text-lg text-[#1a1a1a] mb-8 text-center"
+          className="text-lg text-gray-200 mb-8 text-center"
         >
           {score > 25 ? "Outstanding!" : score > 15 ? "Great job!" : "Good effort!"}
         </motion.p>
@@ -124,7 +124,7 @@ function ResultContent() {
                 {loading ? "Submitting..." : "Submit Score to Leaderboard"}
               </motion.button>
             ) : (
-              <div className="bg-[#f2f2f2] rounded-2xl p-4 text-center">
+              <div className="bg-[#1e293b] rounded-2xl p-4 text-center border border-[#334155]">
                 <p className="text-sm text-gray-500">
                   {!isConnected ? "Connect wallet to submit score" : "Join a round to submit score"}
                 </p>
@@ -160,7 +160,7 @@ function ResultContent() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => router.push("/")}
-            className="w-full py-4 px-6 border-2 border-[#1a1a1a] text-[#1a1a1a] font-bold rounded-2xl transition-all hover:bg-[#f2f2f2]"
+            className="w-full py-4 px-6 border-2 border-gray-400 text-white font-bold rounded-2xl transition-all hover:bg-[#1e293b]"
           >
             Home
           </motion.button>
@@ -179,7 +179,7 @@ export default function ResultPage() {
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
           <span className="text-5xl">🎨</span>
         </div>
-        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+        <p className="mt-4 text-lg text-white">Loading...</p>
       </div>
     }>
       <ResultContent />

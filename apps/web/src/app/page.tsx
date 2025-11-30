@@ -70,12 +70,12 @@ function HomeContent() {
         className="flex flex-col items-center mb-12"
       >
         <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center mb-6 shadow-lg">
-          <span className="text-6xl font-bold text-[#1a1a1a]">🎨</span>
+          <span className="text-6xl font-bold text-white">🎨</span>
         </div>
-        <h1 className="text-5xl font-black text-[#1a1a1a] text-center mb-3">
+        <h1 className="text-5xl font-black text-white text-center mb-3">
           Color Match Rush
         </h1>
-        <p className="text-xl font-medium text-[#1a1a1a] text-center text-balance mb-2">
+        <p className="text-xl font-medium text-gray-200 text-center text-balance mb-2">
           Compete. Earn. Win.
         </p>
         <p className="text-sm text-gray-500 text-center">
@@ -90,38 +90,38 @@ function HomeContent() {
         transition={{ delay: 0.2 }}
         className="mb-12"
       >
-        <h2 className="text-3xl font-black text-[#1a1a1a] mb-6 text-center">How It Works</h2>
+        <h2 className="text-3xl font-black text-white mb-6 text-center">How It Works</h2>
         <div className="space-y-4">
-          <div className="bg-[#f2f2f2] rounded-2xl p-6">
+          <div className="bg-[#1e293b] rounded-2xl p-6 border border-[#334155]">
             <div className="flex items-start gap-4">
               <div className="text-3xl">1️⃣</div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">Match the Color</h3>
-                <p className="text-[#1a1a1a]">
+                <h3 className="text-xl font-bold text-white mb-2">Match the Color</h3>
+                <p className="text-gray-200">
                   You'll see a color word (like "RED") displayed in a different color. Your job is to select the button that matches the word's meaning, not the color it's displayed in!
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#f2f2f2] rounded-2xl p-6">
+          <div className="bg-[#1e293b] rounded-2xl p-6 border border-[#334155]">
             <div className="flex items-start gap-4">
               <div className="text-3xl">2️⃣</div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">Race Against Time</h3>
-                <p className="text-[#1a1a1a]">
+                <h3 className="text-xl font-bold text-white mb-2">Race Against Time</h3>
+                <p className="text-gray-200">
                   You have 30 seconds to answer as many questions as possible. Each correct answer gives you +1 point, wrong answers give you -1 point.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#f2f2f2] rounded-2xl p-6">
+          <div className="bg-[#1e293b] rounded-2xl p-6 border border-[#334155]">
             <div className="flex items-start gap-4">
               <div className="text-3xl">3️⃣</div>
               <div>
-                <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">Climb the Leaderboard</h3>
-                <p className="text-[#1a1a1a]">
+                <h3 className="text-xl font-bold text-white mb-2">Climb the Leaderboard</h3>
+                <p className="text-gray-200">
                   Submit your score and compete with players worldwide. See if you can make it to the top!
                 </p>
               </div>
@@ -139,9 +139,9 @@ function HomeContent() {
           className="mb-8"
         >
           <RoundCountdown timeLeft={roundData.timeLeft} />
-          <div className="mt-4 bg-[#f2f2f2] rounded-2xl p-4 text-center">
-            <p className="text-sm text-gray-500 mb-1">Prize Pool</p>
-            <p className="text-3xl font-black text-[#1a1a1a]">${roundData.pool.toFixed(2)}</p>
+          <div className="mt-4 bg-[#1e293b] rounded-2xl p-4 text-center border border-[#334155]">
+            <p className="text-sm text-gray-400 mb-1">Prize Pool</p>
+            <p className="text-3xl font-black text-white">${roundData.pool.toFixed(2)}</p>
             <p className="text-xs text-gray-500 mt-2">
               Top 3 winners share: 50% / 30% / 20%
             </p>
@@ -156,18 +156,18 @@ function HomeContent() {
         transition={{ delay: 0.4 }}
         className="mb-12"
       >
-        <h2 className="text-3xl font-black text-[#1a1a1a] mb-6 text-center">Ready to Play?</h2>
+        <h2 className="text-3xl font-black text-white mb-6 text-center">Ready to Play?</h2>
         {loading ? (
-          <div className="w-full py-5 bg-[#f2f2f2] rounded-2xl animate-pulse"></div>
+          <div className="w-full py-5 bg-[#1e293b] rounded-2xl animate-pulse border border-[#334155]"></div>
         ) : hasPlayed ? (
-          <div className="bg-[#f2f2f2] rounded-2xl p-6 text-center">
+          <div className="bg-[#1e293b] rounded-2xl p-6 text-center border border-[#334155]">
             <div className="text-4xl mb-4">✅</div>
-            <p className="text-lg font-bold text-[#1a1a1a] mb-2">
+            <p className="text-lg font-bold text-white mb-2">
               You've already played this round!
             </p>
             <p className="text-2xl font-black text-[#35d07f] mb-2">{userScore}</p>
-            <p className="text-sm text-gray-500 mb-4">Your Score</p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400 mb-4">Your Score</p>
+            <p className="text-sm text-gray-400">
               Wait for the next round to play again.
             </p>
           </div>
@@ -179,11 +179,11 @@ function HomeContent() {
             hasJoined={hasJoined}
           />
         ) : (
-          <div className="bg-[#f2f2f2] rounded-2xl p-6 text-center">
-            <p className="text-lg text-[#1a1a1a] mb-4">
+          <div className="bg-[#1e293b] rounded-2xl p-6 text-center border border-[#334155]">
+            <p className="text-lg text-gray-200 mb-4">
               Connect your wallet to start playing!
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-400">
               Click the wallet button in the top right corner to connect.
             </p>
           </div>
@@ -197,15 +197,15 @@ function HomeContent() {
         transition={{ delay: 0.4 }}
         className="mb-12"
       >
-        <h2 className="text-3xl font-black text-[#1a1a1a] mb-6 text-center">Features</h2>
+        <h2 className="text-3xl font-black text-white mb-6 text-center">Features</h2>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-[#35d07f] to-[#35d07f]/80 rounded-2xl p-4 text-center">
             <div className="text-3xl mb-2">⚡</div>
-            <p className="font-bold text-[#1a1a1a]">Fast Paced</p>
+            <p className="font-bold text-white">Fast Paced</p>
           </div>
           <div className="bg-gradient-to-br from-[#fbcc5c] to-[#fbcc5c]/80 rounded-2xl p-4 text-center">
             <div className="text-3xl mb-2">🧠</div>
-            <p className="font-bold text-[#1a1a1a]">Brain Training</p>
+            <p className="font-bold text-white">Brain Training</p>
           </div>
           <div className="bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] rounded-2xl p-4 text-center">
             <div className="text-3xl mb-2">🏆</div>
@@ -230,7 +230,7 @@ export default function HomePage() {
 
   if (!isMounted) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white pb-20">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20">
         <div className="flex-1 flex flex-col items-center justify-center px-6">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
             <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
@@ -241,7 +241,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
+    <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
       <WalletButton />
       
       <div className="flex-1 overflow-y-auto px-6 pt-20">

@@ -12,7 +12,7 @@ function ProfilePageContent() {
   const { address, isConnected } = useAccount()
 
   return (
-    <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
+    <div className="flex flex-col h-screen w-full bg-[#0f172a] pb-20 relative">
       <WalletButton />
       
       <div className="flex-1 overflow-y-auto px-6 pt-20">
@@ -22,8 +22,8 @@ function ProfilePageContent() {
             animate={{ y: 0, opacity: 1 }}
             className="mb-8"
           >
-            <h1 className="text-4xl font-black text-[#1a1a1a] mb-2">Profile</h1>
-            <p className="text-gray-500">Your game statistics and settings</p>
+            <h1 className="text-4xl font-black text-white mb-2">Profile</h1>
+            <p className="text-gray-400">Your game statistics and settings</p>
           </motion.div>
 
           {isConnected ? (
@@ -35,10 +35,10 @@ function ProfilePageContent() {
                 transition={{ delay: 0.1 }}
                 className="bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] rounded-2xl p-6"
               >
-                <h2 className="text-2xl font-black text-[#1a1a1a] mb-4">Wallet</h2>
+                <h2 className="text-2xl font-black text-white mb-4">Wallet</h2>
                 <div className="bg-white/80 rounded-xl p-4">
-                  <p className="text-sm text-gray-500 mb-1">Address</p>
-                  <p className="font-mono text-[#1a1a1a] font-bold break-all">
+                  <p className="text-sm text-gray-400 mb-1">Address</p>
+                  <p className="font-mono text-white font-bold break-all">
                     {address}
                   </p>
                 </div>
@@ -49,21 +49,21 @@ function ProfilePageContent() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="bg-[#f2f2f2] rounded-2xl p-6"
+                className="bg-[#1e293b] rounded-2xl p-6 border border-[#334155]"
               >
-                <h2 className="text-2xl font-black text-[#1a1a1a] mb-4">Statistics</h2>
+                <h2 className="text-2xl font-black text-white mb-4">Statistics</h2>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-[#1a1a1a]">Games Played</span>
-                    <span className="font-bold text-[#1a1a1a]">-</span>
+                    <span className="text-gray-200">Games Played</span>
+                    <span className="font-bold text-white">-</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#1a1a1a]">Best Score</span>
-                    <span className="font-bold text-[#1a1a1a]">-</span>
+                    <span className="text-gray-200">Best Score</span>
+                    <span className="font-bold text-white">-</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[#1a1a1a]">Total Points</span>
-                    <span className="font-bold text-[#1a1a1a]">-</span>
+                    <span className="text-gray-200">Total Points</span>
+                    <span className="font-bold text-white">-</span>
                   </div>
                 </div>
               </motion.div>
@@ -73,13 +73,13 @@ function ProfilePageContent() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="bg-[#f2f2f2] rounded-2xl p-6"
+                className="bg-[#1e293b] rounded-2xl p-6 border border-[#334155]"
               >
-                <h2 className="text-2xl font-black text-[#1a1a1a] mb-4">About</h2>
-                <p className="text-[#1a1a1a] mb-4">
+                <h2 className="text-2xl font-black text-white mb-4">About</h2>
+                <p className="text-gray-200 mb-4">
                   Color Match Rush is a fast-paced color-matching game built for the Celo MiniPay Hackathon.
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-400">
                   Test your brain speed and compete with players worldwide!
                 </p>
               </motion.div>
@@ -88,13 +88,13 @@ function ProfilePageContent() {
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="bg-[#f2f2f2] rounded-2xl p-8 text-center"
+              className="bg-[#1e293b] rounded-2xl p-8 text-center border border-[#334155]"
             >
               <div className="text-6xl mb-4">🔒</div>
-              <h2 className="text-2xl font-black text-[#1a1a1a] mb-4">
+              <h2 className="text-2xl font-black text-white mb-4">
                 Connect Your Wallet
               </h2>
-              <p className="text-[#1a1a1a] mb-4">
+              <p className="text-gray-200 mb-4">
                 Connect your wallet to view your profile and statistics.
               </p>
               <p className="text-sm text-gray-500">
@@ -119,11 +119,11 @@ export default function ProfilePage() {
 
   if (!isMounted) {
     return (
-      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+      <div className="flex flex-col h-screen w-full bg-[#0f172a] items-center justify-center">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
-          <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
+          <span className="text-5xl font-bold text-white">🎨</span>
         </div>
-        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+        <p className="mt-4 text-lg text-white">Loading...</p>
       </div>
     )
   }
