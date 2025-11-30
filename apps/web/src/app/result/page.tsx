@@ -1,13 +1,15 @@
 "use client"
 
 import { useSearchParams, useRouter } from "next/navigation"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion } from "framer-motion"
 import { useAccount } from "wagmi"
 import BottomNav from "@/components/BottomNav"
 import WalletButton from "@/components/WalletButton"
 
-export default function ResultPage() {
+export const dynamic = 'force-dynamic'
+
+function ResultContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const { address, isConnected } = useAccount()
@@ -170,3 +172,17 @@ export default function ResultPage() {
   )
 }
 
+export default function ResultPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col h-screen w-full pb-20 items-center justify-center">
+        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
+          <span className="text-5xl">🎨</span>
+        </div>
+        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+      </div>
+    }>
+      <ResultContent />
+    </Suspense>
+  )
+}

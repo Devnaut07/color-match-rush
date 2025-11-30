@@ -1,6 +1,8 @@
 import { connectDB } from "@/lib/db"
 import { NextRequest } from "next/server"
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams

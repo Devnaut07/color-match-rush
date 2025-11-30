@@ -27,7 +27,14 @@ export async function GET() {
       .toArray()
 
     // Extract score value and sort again client-side to ensure correct order
-    const withScore = leaderboard.map((entry: any) => ({
+    interface ScoreEntry {
+      _id: string
+      address: string
+      score: number
+      createdAt: Date
+    }
+
+    const withScore: ScoreEntry[] = leaderboard.map((entry: any) => ({
       _id: entry._id,
       address: entry.address,
       score: entry.score || entry.totalScore || entry.bestScore || 0,
@@ -35,7 +42,7 @@ export async function GET() {
     }))
 
     // Sort by score descending, then by createdAt ascending (oldest first for ties)
-    withScore.sort((a, b) => {
+    withScore.sort((a: ScoreEntry, b: ScoreEntry) => {
       if (b.score !== a.score) {
         return b.score - a.score  // Higher score first
       }

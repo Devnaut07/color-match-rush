@@ -10,10 +10,12 @@ import ColorButtons from "@/components/ColorButtons"
 import ScoreFlash from "@/components/ScoreFlash"
 import AnimatedBackground from "@/components/AnimatedBackground"
 
+export const dynamic = 'force-dynamic'
+
 interface Question {
   wordName: string
   wordColor: string
-  options: { name: string; color: string }[]
+  options: { name: string; hex: string }[]
 }
 
 const COLORS = [
@@ -46,7 +48,7 @@ function generateQuestion(): Question {
   return { wordName, wordColor, options }
 }
 
-export default function GamePage() {
+function GamePageContent() {
   const router = useRouter()
   const { address, isConnected } = useAccount()
   const [score, setScore] = useState(0)
@@ -232,3 +234,23 @@ export default function GamePage() {
   )
 }
 
+export default function GamePage() {
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return (
+      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
+          <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
+        </div>
+        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+      </div>
+    )
+  }
+
+  return <GamePageContent />
+}

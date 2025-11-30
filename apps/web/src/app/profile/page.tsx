@@ -6,17 +6,10 @@ import { useAccount } from "wagmi"
 import WalletButton from "@/components/WalletButton"
 import BottomNav from "@/components/BottomNav"
 
-export default function ProfilePage() {
+export const dynamic = 'force-dynamic'
+
+function ProfilePageContent() {
   const { address, isConnected } = useAccount()
-  const [isMounted, setIsMounted] = useState(false)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted) {
-    return null
-  }
 
   return (
     <div className="flex flex-col h-screen w-full bg-white pb-20 relative">
@@ -117,4 +110,23 @@ export default function ProfilePage() {
   )
 }
 
+export default function ProfilePage() {
+  const [isMounted, setIsMounted] = useState(false)
 
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return (
+      <div className="flex flex-col h-screen w-full bg-white items-center justify-center">
+        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#35d07f] to-[#fbcc5c] flex items-center justify-center animate-pulse">
+          <span className="text-5xl font-bold text-[#1a1a1a]">🎨</span>
+        </div>
+        <p className="mt-4 text-lg text-[#1a1a1a]">Loading...</p>
+      </div>
+    )
+  }
+
+  return <ProfilePageContent />
+}
