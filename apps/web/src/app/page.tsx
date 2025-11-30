@@ -79,7 +79,7 @@ function HomeContent() {
           Compete. Earn. Win.
         </p>
         <p className="text-sm text-gray-500 text-center">
-          Join 12-hour rounds • $0.50 entry • Top 3 win prizes
+          Join 10-hour rounds • $0.50 entry • Top 3 win prizes
         </p>
       </motion.div>
 

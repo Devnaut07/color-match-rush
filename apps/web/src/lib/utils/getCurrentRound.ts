@@ -20,11 +20,13 @@ export async function getCurrentRound(): Promise<Round | null> {
   })
 
   if (activeRound) {
+    // Always get fresh pool value from database
+    const freshRound = await roundsCollection.findOne({ roundId: activeRound.roundId })
     return {
       roundId: activeRound.roundId,
       startTime: activeRound.startTime,
       endTime: activeRound.endTime,
-      pool: activeRound.pool || 0,
+      pool: freshRound?.pool || activeRound.pool || 0,
       entryFee: activeRound.entryFee || 0.5,
     }
   }
@@ -32,7 +34,7 @@ export async function getCurrentRound(): Promise<Round | null> {
   // If no active round, create one
   const roundId = `round-${Date.now()}`
   const startTime = new Date()
-  const endTime = new Date(startTime.getTime() + 12 * 60 * 60 * 1000) // 12 hours
+  const endTime = new Date(startTime.getTime() + 10 * 60 * 60 * 1000) // 10 hours
 
   await roundsCollection.insertOne({
     roundId,
