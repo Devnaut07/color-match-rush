@@ -2,13 +2,22 @@
 pragma solidity ^0.8.28;
 
 /**
+ * @title IERC20
+ * @notice Minimal ERC20 interface for token transfers
+ */
+interface IERC20 {
+    function transfer(address to, uint256 amount) external returns (bool);
+    function balanceOf(address account) external view returns (uint256);
+}
+
+/**
  * @title ColorMatchRushTreasury
  * @notice Treasury contract for Color Match Rush game
  * Receives entry fees and distributes prizes to winners
  */
 contract ColorMatchRushTreasury {
     address public owner;
-    address public cUSD;
+    IERC20 public cUSD;
     
     // Round tracking
     struct Round {
@@ -40,7 +49,7 @@ contract ColorMatchRushTreasury {
     
     constructor(address _cUSD) {
         owner = msg.sender;
-        cUSD = _cUSD;
+        cUSD = IERC20(_cUSD);
     }
     
     /**
@@ -122,11 +131,14 @@ contract ColorMatchRushTreasury {
      * @notice Transfer ERC20 tokens
      */
     function transferERC20(address to, uint256 amount) internal returns (bool) {
-        // Using low-level call for ERC20 transfer
-        (bool success, ) = cUSD.call(
-            abi.encodeWithSignature("transfer(address,uint256)", to, amount)
-        );
-        return success;
+        return cUSD.transfer(to, amount);
+    }
+    
+    /**
+     * @notice Get contract balance
+     */
+    function getBalance() external view returns (uint256) {
+        return cUSD.balanceOf(address(this));
     }
     
     /**
@@ -151,7 +163,17 @@ contract ColorMatchRushTreasury {
     function emergencyWithdraw(uint256 amount) external onlyOwner {
         require(transferERC20(owner, amount), "Withdraw failed");
     }
+    
+    /**
+     * @notice Emergency withdraw all (only owner)
+     */
+    function emergencyWithdrawAll() external onlyOwner {
+        uint256 balance = cUSD.balanceOf(address(this));
+        require(balance > 0, "No balance to withdraw");
+        require(transferERC20(owner, balance), "Withdraw failed");
+    }
 }
+
 
 
 

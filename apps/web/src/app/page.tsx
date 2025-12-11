@@ -62,7 +62,7 @@ function HomeContent() {
   
   return (
     <div className="relative min-h-screen">
-      {/* Hero Section */}
+  {/* Hero Section */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

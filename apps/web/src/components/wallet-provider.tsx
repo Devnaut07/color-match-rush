@@ -42,9 +42,9 @@ const celoSepolia = defineChain({
 // Create connectors and config only on client side to avoid indexedDB SSR issues
 function createConnectors() {
   return connectorsForWallets(
-    [
-      {
-        groupName: "Recommended",
+  [
+    {
+      groupName: "Recommended",
         wallets: [
           metaMaskWallet,
           rainbowWallet,
@@ -52,23 +52,23 @@ function createConnectors() {
           walletConnectWallet,
           injectedWallet,
         ],
-      },
-    ],
-    {
-      appName: "color-match-rush",
-      projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID!,
-    }
-  );
+    },
+  ],
+  {
+    appName: "color-match-rush",
+    projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID!,
+  }
+);
 }
 
 function createWagmiConfig() {
   return createConfig({
     chains: [celoSepolia, celoAlfajores, celo],
     connectors: createConnectors(),
-    transports: {
+  transports: {
       [celoSepolia.id]: http(),
       [celoAlfajores.id]: http(),
-      [celo.id]: http(),
+    [celo.id]: http(),
     },
     ssr: false,
   });
@@ -79,7 +79,7 @@ function createQueryClient() {
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
-      },
+  },
     },
   });
 }

@@ -6,8 +6,8 @@ import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagm
 import { parseUnits } from "viem"
 import { useRouter } from "next/navigation"
 
-// cUSD contract address on Celo Sepolia
-const CUSD_ADDRESS = "0x6c23508A9b310C5f2eb2e2eFeBeB748067478667" as `0x${string}`
+// cUSD contract address on Celo Mainnet
+const CUSD_ADDRESS = "0x765DE816845861e75A25fCA122bb6898B8B1282a" as `0x${string}`
 
 // ERC20 Transfer ABI
 const ERC20_ABI = [
@@ -23,9 +23,9 @@ const ERC20_ABI = [
   },
 ] as const
 
-// Treasury address - where entry fees go
-// Default to your wallet address, can be overridden via NEXT_PUBLIC_TREASURY_ADDRESS env var
-const TREASURY_ADDRESS = (process.env.NEXT_PUBLIC_TREASURY_ADDRESS || "0xf39ce20c6a905157cf532890ed87b86f422774b7") as `0x${string}`
+// Treasury contract address - deployed ColorMatchRushTreasury contract on Celo Mainnet
+// This contract holds entry fees and distributes prizes automatically
+const TREASURY_ADDRESS = (process.env.NEXT_PUBLIC_TREASURY_ADDRESS || "0xc328abADc8e0B205948ECD359F341bd9F3d7ebD2") as `0x${string}`
 
 interface JoinRoundButtonProps {
   roundId: string
@@ -99,9 +99,9 @@ export default function JoinRoundButton({ roundId, entryFee, pool, hasJoined }: 
       return
     }
 
-    // Check if on correct network
-    if (chain && chain.id !== 11142220) {
-      alert("Please switch to Celo Sepolia network to play")
+    // Check if on correct network (Celo Mainnet)
+    if (chain && chain.id !== 42220) {
+      alert("Please switch to Celo Mainnet to play")
       return
     }
 

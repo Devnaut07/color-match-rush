@@ -189,3 +189,4 @@ If you encounter issues:
 3. Check Next.js dev server logs
 4. Review MiniPay documentation
 
+

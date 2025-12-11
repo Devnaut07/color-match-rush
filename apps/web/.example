@@ -25,12 +25,11 @@ NEXT_PUBLIC_WC_PROJECT_ID=your_walletconnect_project_id_here
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/?retryWrites=true&w=majority
 
 # --------------------------------------------
-# Treasury Address (OPTIONAL)
+# Treasury Contract Address (REQUIRED for mainnet)
 # --------------------------------------------
-# Address where entry fees ($0.50) will be collected
-# This should be a wallet address you control
-# If not set, will use a burn address (0xdead) for testing
+# Deployed ColorMatchRushTreasury contract address on Celo Mainnet
+# This contract holds entry fees and distributes prizes automatically
 # Format: 0x followed by 40 hex characters
-# Example: 0xf39ce20c6a905157cf532890ed87b86f422774b7
-NEXT_PUBLIC_TREASURY_ADDRESS=0xf39ce20c6a905157cf532890ed87b86f422774b7
+# Mainnet Contract: 0xc328abADc8e0B205948ECD359F341bd9F3d7ebD2
+NEXT_PUBLIC_TREASURY_ADDRESS=0xc328abADc8e0B205948ECD359F341bd9F3d7ebD2
 
